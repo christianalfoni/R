@@ -1,0 +1,37 @@
+{
+  "name": "R",
+  "version": "0.1.0",
+  "description": "An application framework using functional reactive concepts and virtual-dom",
+  "main": "./src/R.js",
+  "scripts": {
+    "start": "webpack-dev-server --devtool eval --progress --colors --content-base build/",
+    "deploy": "webpack -p -config webpack.production.js",
+    "test": "./node_modules/nodeunit/bin/nodeunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christianalfoni/R.git"
+  },
+  "keywords": [
+    "reactive",
+    "framework",
+    "application",
+    "flux"
+  ],
+  "author": "Christian Alfoni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christianalfoni/R/issues"
+  },
+  "homepage": "https://github.com/christianalfoni/R",
+  "devDependencies": {
+    "nodeunit": "^0.9.1",
+    "virtual-dom-loader": "^0.1.0",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "dependencies": {
+    "observable-state": "^0.1.0",
+    "virtual-dom": "^2.0.1"
+  }
+}
