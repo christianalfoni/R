@@ -25,13 +25,21 @@
   },
   "homepage": "https://github.com/christianalfoni/R",
   "devDependencies": {
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
+    "es6-promise": "^2.0.1",
     "nodeunit": "^0.9.1",
+    "page": "^1.6.1",
     "virtual-dom-loader": "^0.1.0",
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
-    "observable-state": "^0.1.0",
+    "dom-delegator": "^13.1.0",
+    "observable-state": "^0.3.4",
     "virtual-dom": "^2.0.1"
+  },
+  "peerDependencies": {
+    "baconjs": "^0.7.53"
   }
 }
