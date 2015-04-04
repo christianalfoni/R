@@ -41,7 +41,7 @@ module.exports = View(function (props, models, controllers) {
                 id="new-todo" 
                 value={data.title}
                 ev-keydown={controllers.changeNewTitle.push}
-                placeholder="What needs to be done?" 
+                placeholder={data.isSaving ? 'Saving...' : 'What needs to be done?'} 
                 disabled={data.isSaving}
                 autofocus
               />
