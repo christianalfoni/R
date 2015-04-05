@@ -4,6 +4,9 @@ An application framework using functional reactive concepts and virtual-dom
 ## Install
 `npm install R` or `bower install R`
 
+## Run
+`npm start` runs the demo on *localhost:8080*
+
 ## Contribute
 - Fork and clone repo
 - `npm install`
