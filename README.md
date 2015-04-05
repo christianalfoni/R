@@ -2,7 +2,7 @@
 An application framework using functional reactive concepts and virtual-dom
 
 ## Install
-`npm install R-js`
+`npm install r-js`
 
 ## Run
 `npm start` runs the demo on *localhost:8080*
