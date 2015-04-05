@@ -1,5 +1,5 @@
 {
-  "name": "R",
+  "name": "R-js",
   "version": "0.1.0",
   "description": "An application framework using functional reactive concepts and virtual-dom",
   "main": "./src/R.js",
