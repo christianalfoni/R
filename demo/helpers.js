@@ -77,12 +77,8 @@ module.exports = {
   returnFalse: function () {
     return false;
   },
-  resetByEnterPress: function (event) {
-    if (!event || event.keyCode === 13) {
-      return '';
-    } else {
-      return event.target.value;
-    }
+  returnEmptyString: function () {
+    return '';
   },
   mutateValue: function (value, mutation) {
     return mutation(value);

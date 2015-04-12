@@ -1,4 +1,4 @@
-import controllers from './controllers.js';
+import actions from './actions.js';
 import Bacon from 'baconjs';
 import { Promise } from 'es6-promise';
 import {
@@ -12,7 +12,7 @@ import {
   toggleAllTodoMutation,
   saveTodoToServer,
   isAllChecked,
-  resetByEnterPress,
+  returnEmptyString,
   returnTrue,
   returnFalse,
   removeTodoMutation,
@@ -27,30 +27,31 @@ import {
 } from './helpers.js';
 
 
-var toggleTodo = controllers.toggleTodo
+var toggleTodo = actions.toggleTodo
   .map(toggleTodoMutation);
 
-var newTodo = controllers.changeNewTitle
+var newTodo = actions.changeNewTitle
+  .throttle(0)
   .filter(pressEnterWithValue)
   .map(createTodoFromEvent);
 
 var addTodo = newTodo
   .map(addTodoMutation);
 
-var removeTodo = controllers.removeTodo
+var removeTodo = actions.removeTodo
   .map(removeTodoMutation);
 
-var clearCompleted = controllers.clearCompleted
+var clearCompleted = actions.clearCompleted
   .map(clearCompletedMutation);
 
-var editTodo = controllers.editTodo
+var editTodo = actions.editTodo
   .map(editTodoMutation);
 
-var stopEditing = controllers.stopEditing
+var stopEditing = actions.stopEditing
   .filter(escOrClick)
   .map(clearEditTodoMutation);
 
-var toggleAll = controllers.toggleAll
+var toggleAll = actions.toggleAll
   .map(toggleAllTodoMutation);
 
 var saveTodo = newTodo
@@ -62,10 +63,10 @@ var savedTodo = saveTodo
   .map(updateTodoMutation)
   .mapError(revertUpdateTodoMutation);
 
-var changeEditedTodoTitle = controllers.changeEditedTodoTitle
+var changeEditedTodoTitle = actions.changeEditedTodoTitle
   .map(changeEditedTodoTitleMutation);
 
-var setEditedTodoTitle = controllers.changeEditedTodoTitle
+var setEditedTodoTitle = actions.changeEditedTodoTitle
   .filter(pressEnterWithValue)
   .map(setEditedTodoTitleMutation);
 
@@ -93,7 +94,7 @@ var isSaving = Bacon
   )
   .startWith(false);
 
-var filter = controllers.filterTodos
+var filter = actions.filterTodos
   .toProperty()
   .startWith({
     complete: true,
@@ -104,8 +105,8 @@ var filteredTodos = Bacon
   .combineAsArray(todos, filter)
   .map(filterTodos);
 
-var newTitle = controllers.changeNewTitle
-  .map(resetByEnterPress)
+var newTitle = newTodo
+  .map(returnEmptyString)
   .startWith('');
 
 var count = todos

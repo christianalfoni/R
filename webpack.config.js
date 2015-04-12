@@ -5,7 +5,7 @@ var demoPath = path.resolve(__dirname, 'demo');
 var buildPath = path.resolve(__dirname, 'build');
 
 var config = {
-  entry: [path.resolve(srcPath, 'R.js'), path.resolve(demoPath, 'main.js')],
+  entry: [path.resolve(srcPath, 'index.js'), path.resolve(demoPath, 'main.js')],
   output: {
     path: buildPath,
     filename: 'lib.js',
@@ -16,7 +16,7 @@ var config = {
   },
   resolve: {
     alias: {
-      'R': path.resolve(srcPath, 'R.js')
+      'R': path.resolve(srcPath, 'index.js')
     }
   },
   module: {

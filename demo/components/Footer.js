@@ -1,7 +1,9 @@
-import {View, DOM} from 'R';
+import {Component, DOM, Hook} from 'R';
 import Bacon from 'baconjs';
 
-module.exports = View(function (props, models, controllers) {
+module.exports = Component(function (props, observables) {
+
+  var {actions, store} = observables;
 
   var getRemainingText = function (remainingCount) {
     return remainingCount === 1 ? remainingCount + ' item left' : remainingCount + ' items left';
@@ -18,27 +20,27 @@ module.exports = View(function (props, models, controllers) {
   };
 
   return Bacon.combineTemplate({
-      filter: models.filter,
-      remainingCount: models.remainingCount,
-      count: models.count
+      filter: store.filter,
+      remainingCount: store.remainingCount,
+      count: store.count
     })
-    .map(function (data) {
+    .map(function (state) {
       return (
         <footer id="footer">
-          <span id="todo-count"><strong>{getRemainingText(data.remainingCount)}</strong>
+          <span id="todo-count"><strong>{getRemainingText(state.remainingCount)}</strong>
           </span>
           <ul id="filters">
             <li>
-              <a className={getClassName(['complete', 'inComplete'], data.filter)} href="/">All</a>
+              <a className={getClassName(['complete', 'inComplete'], state.filter)} href="/">All</a>
             </li>
             <li>
-              <a className={getClassName(['inComplete'], data.filter)} href="/incomplete">Active</a>
+              <a className={getClassName(['inComplete'], state.filter)} href="/incomplete">Active</a>
             </li>
             <li>
-              <a className={getClassName(['complete'], data.filter)} href="/complete">Completed</a>
+              <a className={getClassName(['complete'], state.filter)} href="/complete">Completed</a>
             </li>
           </ul>
-          <button id="clear-completed" ev-click={controllers.clearCompleted.push}></button>
+          <button id="clear-completed" ev-click={Hook(actions.clearCompleted, 'push')}></button>
         </footer>
       );
     })

@@ -1,8 +1,8 @@
 {
   "name": "r-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An application framework using functional reactive concepts and virtual-dom",
-  "main": "./src/R.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "webpack-dev-server --devtool eval --progress --colors --content-base build/",
     "deploy": "webpack -p -config webpack.production.js",
@@ -30,16 +30,13 @@
     "es6-promise": "^2.0.1",
     "nodeunit": "^0.9.1",
     "page": "^1.6.1",
+    "rx": "^2.5.2",
     "virtual-dom-loader": "^0.1.0",
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
     "dom-delegator": "^13.1.0",
-    "observable-state": "^0.3.4",
     "virtual-dom": "^2.0.1"
-  },
-  "peerDependencies": {
-    "baconjs": "^0.7.53"
   }
 }
