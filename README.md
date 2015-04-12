@@ -121,6 +121,8 @@ And last but not least, you need an html file in your build folder. `build/index
 </body>
 ```
 
+Run your project workflow with `npm start`.
+
 Please check out [react-webpack-cookbook](https://github.com/christianalfoni/react-webpack-cookbook/wiki) for more info on using webpack.
 
 ### Run
