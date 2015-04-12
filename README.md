@@ -33,18 +33,14 @@ exports default Component(function (props, observables) {
 ```
 
 #### Render
-Inject observables to map over in your Components. The function has to return a virtual dom structure that will be mounted on `document.body`.
+Inject observables to map over in your Components. The function has to return a component that will be mounted on `document.body`.
 ```js
 import {Render, DOM} from 'r-js';
 import observables from './observables.js';
 import App from './App.js';
 
 Render(observables, function () {
-  return (
-    <div>
-      <App message="Wazup?"/>
-    </div>
-  );
+  return <App message="Wazup?"/>;
 });
 
 ```
